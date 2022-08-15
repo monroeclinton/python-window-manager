@@ -1,0 +1,15 @@
+# Modifier is added to actions, so press Mod1 + c to open xclock
+# Run xmodmap to see mappings
+modifier: "Mod1"
+
+# Programs to launch
+actions:
+ - command: "xclock"
+   key: "c"
+ - command: "st"
+   key: "t"
+   # How to cycle through windows
+ - action: "NEXT_WINDOW"
+   key: "Right"
+ - action: "PREVIOUS_WINDOW"
+   key: "Left"
