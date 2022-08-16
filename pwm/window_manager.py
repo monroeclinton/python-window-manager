@@ -41,7 +41,8 @@ class WindowManager:
 
     def run(self):
         """
-        Setup and run window manager
+        Setup and run window manager. This includes checking if another window manager is
+        running, listening for certain key presses, and handling events.
         """
 
         # Tell X server which events we wish to recieve for the root window.
