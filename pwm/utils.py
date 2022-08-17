@@ -6,8 +6,12 @@ class KeyUtil:
     def __init__(self, conn):
         self.conn = conn
 
-        # The number of keycodes associated with your keyboard. This number will never be less
-        # than eight because the first keycodes are used for modifiers ()
+        # The the min and max of keycodes associated with your keyboard. A keycode will never
+        # be less than eight because I believe the 0-7 keycodes are reserved. The keycode zero
+        # symbolizes AnyKey and I can't find references to the other seven. The max keycode is 255.
+        # Further readings:
+        # https://bugs.freedesktop.org/show_bug.cgi?id=11227
+        # https://who-t.blogspot.com/2014/12/why-255-keycode-limit-in-x-is-real.html
         self.min_keycode = self.conn.get_setup().min_keycode
         self.max_keycode = self.conn.get_setup().max_keycode
 
