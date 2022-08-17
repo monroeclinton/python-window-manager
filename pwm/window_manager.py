@@ -97,9 +97,9 @@ class WindowManager:
             if isinstance(event, xcffib.xproto.KeyPressEvent):
                 self._handle_key_press_event(event)
             if isinstance(event, xcffib.xproto.MapRequestEvent):
-                self._configure_map_request_event(event)
+                self._handle_map_request_event(event)
             if isinstance(event, xcffib.xproto.ConfigureRequestEvent):
-                self._configure_request_event(event)
+                self._handle_configure_request_event(event)
 
             # Flush requests to send to X server
             self.conn.flush()
@@ -162,7 +162,7 @@ class WindowManager:
                 if 'action' in action:
                     self._handle_action(action['action'])
 
-    def _configure_map_request_event(self, event):
+    def _handle_map_request_event(self, event):
         """
         When a window wants to map, meaning make itself visibile, it send a MapRequestEvent that
         gets send to the window manager. Here we add it to our client list and finish by sending
@@ -205,7 +205,7 @@ class WindowManager:
             self.windows.insert(0, event.window)
             self.current_window = 0
 
-    def _configure_request_event(self, event):
+    def _handle_configure_request_event(self, event):
         """
         A configure request is a request that is asking to change a certain thing about a window.
         This can include width/height, x/y, border width, border color, etc.
