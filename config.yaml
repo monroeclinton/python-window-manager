@@ -2,13 +2,13 @@
 # Run xmodmap to see mappings
 modifier: "Mod1"
 
-# Programs to launch
 actions:
+ # Programs to launch
  - command: "xclock"
    key: "c"
  - command: "st"
    key: "t"
-   # How to cycle through windows
+ # How to cycle through windows
  - action: "NEXT_WINDOW"
    key: "Right"
  - action: "PREVIOUS_WINDOW"
