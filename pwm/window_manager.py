@@ -3,8 +3,6 @@ import logging
 import subprocess
 import xcffib
 import xcffib.xproto
-import xpybutil
-import xpybutil.keybind
 import yaml
 
 
