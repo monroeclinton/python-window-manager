@@ -29,7 +29,7 @@ class WindowManager:
 
         # All windows have a parent, the root window is the final parent of the tree of windows.
         # It is created when a screen is added to the X server. It is used for background images
-        # and colors. It also can recieve events that happen to its children such as mouse in/out,
+        # and colors. It also can receive events that happen to its children such as mouse in/out,
         # window creation/deletion, etc.
         self.root_window = self.screen.root
 
@@ -43,12 +43,12 @@ class WindowManager:
         running, listening for certain key presses, and handling events.
         """
 
-        # Tell X server which events we wish to recieve for the root window.
+        # Tell X server which events we wish to receive for the root window.
         cookie = self.conn.core.ChangeWindowAttributesChecked(
             self.root_window,
             xcffib.xproto.CW.EventMask,  # Window attribute to set which events we want
             [
-                # We want to recieve any substrucutre changes. This includes window
+                # We want to receive any substructure changes. This includes window
                 # creation/deletion, resizes, etc.
                 xcffib.xproto.EventMask.SubstructureNotify |
                 # We want X server to redirect children substructure notifications to the
@@ -139,7 +139,7 @@ class WindowManager:
 
     def _handle_key_press_event(self, event):
         """
-        We recieve key press events on windows below the root_window that match keysyms we are
+        We receive key press events on windows below the root_window that match keysyms we are
         listening on from the GrabKey method above.
 
         :param event: KeyPressEvent to handle
@@ -162,7 +162,7 @@ class WindowManager:
 
     def _handle_map_request_event(self, event):
         """
-        When a window wants to map, meaning make itself visibile, it send a MapRequestEvent that
+        When a window wants to map, meaning make itself visible, it send a MapRequestEvent that
         gets send to the window manager. Here we add it to our client list and finish by sending
         a MapWindow request to the server. This request tells the X server to make the window
         visible.
